@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 23:42:52 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/03 15:24:17 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:36:32 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void smistamentostaamagb(t_stack *stack)
     {
         stack->mosse = stack->posb + n(stack->posa, stack->a) + 1;
         stack->move = 1;
+		setall(stack);
     }
     if (stack->mosse > (2*(stack->posa + n(stack->posa, stack->a)) 
             + (stack->last_a - stack->posb)))
@@ -69,16 +70,19 @@ void smistamentostaamagb(t_stack *stack)
         stack->mosse = (2*(stack->posa + n(stack->posa, stack->a)) 
         + (stack->last_a - stack->posb));
         stack->move = 2;
+		setall(stack);
     }
     if (stack->mosse > (stack->last_a - stack->posa) +1 + n(stack->posb, stack->a))
     {
         stack->mosse = (stack->last_a - stack->posa) +1 + n(stack->posb, stack->a);
         stack->move = 3;
+		setall(stack);
     }
     if (stack->mosse > 2*(stack->last_a - stack->posb) + 3 * n(stack->posb, stack->a) + stack->posa)
     {
         stack->mosse = 2*(stack->last_a - stack->posb) + 3 * n(stack->posb, stack->a) + stack->posa;
         stack->move = 4;
+		setall(stack);
     }     
 }
 
@@ -87,26 +91,30 @@ void smistamentostaaminb(t_stack *stack)
          if (stack->mosse > stack->posb + n(stack->posa, stack->a))
         {
             stack->mosse = stack->posb + n(stack->posa, stack->a);
-            stack->move = 1;
+            stack->move = 5;
+			setall(stack);
         }
         if (stack->mosse > (2*stack->posa + stack->last_a - stack->posb +3))
         {
             stack->mosse = 2*stack->posa + stack->last_a - stack->posb +3;
-            stack->move = 2;
+            stack->move = 6;
+			setall(stack);
         }
         if (stack->mosse > (stack->last_a + 2 * n(stack->posb, stack->a) + 1
              - n(stack->posa, stack->a) - stack->posa))
         {
             stack->mosse = stack->last_a + 2 * n(stack->posb, stack->a) + 1
                 - n(stack->posa, stack->a) - stack->posa;
-            stack->move = 3;
+            stack->move = 7;
+			setall(stack);
         }
         if (stack->mosse > 2*(stack->last_a - stack->posb) 
             + 2 + stack->posa + n(stack->posa, stack->a) + n(stack->posb, stack->a))
         {
             stack->mosse = 2*(stack->last_a - stack->posb) 
             + 2 + stack->posa + n(stack->posa, stack->a) + n(stack->posb, stack->a);
-            stack->move = 4;
+            stack->move = 8;
+			setall(stack);
         }     
     }
 
@@ -124,24 +132,28 @@ void smistamentostbaminb(t_stack *stack)
     if (stack->mosse > stack->posb + n(stack->posa, stack->b) + 1)
     {
         stack->mosse = stack->posb + n(stack->posa, stack->b) + 1;
-        stack->move = 1;
+        stack->move = 9;
+		setall(stack);
     }
     if (stack->mosse > (2*(stack->posa + n(stack->posa, stack->b)) 
             + (stack->last_b - stack->posb)))
     {
         stack->mosse = (2*(stack->posa + n(stack->posa, stack->b)) 
         + (stack->last_b - stack->posb));
-        stack->move = 2;
+        stack->move = 10;
+		setall(stack);
     }
     if (stack->mosse > (stack->last_b - stack->posa) +1 + n(stack->posb, stack->b))
     {
         stack->mosse = (stack->last_b - stack->posa) +1 + n(stack->posb, stack->b);
-        stack->move = 3;
+        stack->move = 11;
+		setall(stack);
     }
     if (stack->mosse > 2*(stack->last_b - stack->posb) + 3 * n(stack->posb, stack->b) + stack->posa)
     {
         stack->mosse = 2*(stack->last_b - stack->posb) + 3 * n(stack->posb, stack->b) + stack->posa;
-        stack->move = 4;
+        stack->move = 12;
+		setall(stack);
     }     
 }
 
@@ -150,25 +162,33 @@ void smistamentostbamagb(t_stack *stack)
          if (stack->mosse > stack->posb + n(stack->posa, stack->b))
         {
             stack->mosse = stack->posb + n(stack->posa, stack->b);
-            stack->move = 1;
+			setall(stack);
+            stack->move = 13;
         }
         if (stack->mosse > (2*stack->posa + stack->last_b - stack->posb +3))
         {
             stack->mosse = 2*stack->posa + stack->last_b - stack->posb +3;
-            stack->move = 2;
+			setall(stack);
+            stack->move = 14;
         }
         if (stack->mosse > (stack->last_b + 2 * n(stack->posb, stack->a) + 1
              - n(stack->posa, stack->a) - stack->posa))
         {
             stack->mosse = stack->last_a + 2 * n(stack->posb, stack->a) + 1
                 - n(stack->posa, stack->a) - stack->posa;
-            stack->move = 3;
+			setall(stack);
+            stack->move = 15;
         }
         if (stack->mosse > 2*(stack->last_a - stack->posb) 
             + 2 + stack->posa + n(stack->posa, stack->a) + n(stack->posb, stack->a))
         {
             stack->mosse = 2*(stack->last_a - stack->posb) 
             + 2 + stack->posa + n(stack->posa, stack->a) + n(stack->posb, stack->a);
-            stack->move = 4;
+			setall(stack);
+            stack->move = 16;
         }     
-    }
+    }   ///porcoddue
+
+
+
+
