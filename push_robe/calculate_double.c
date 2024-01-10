@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:08:01 by matteocamil       #+#    #+#             */
-/*   Updated: 2023/12/30 17:54:37 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:41:43 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void mosse2(int x, t_stack *stack)
 	if (takeminor(stack, x) && x != 1)
 	{
 		y = takemajor(stack, x);
-		smistamento(x, y, stack);
+		smistamento(stack, x);
 	}
 	if (takeminorone(stack, x) && x == 1)
 	{
 		y = takemajorone(stack, x);
-		smistamento(x, y, stack);
+		smistamento(stack, x);
 	}
 }
 /*questa funzione serve per spazzolare gli array all'inizio*/
@@ -76,7 +76,7 @@ void choosenumbers0(t_stack *stack)
 
 	while (!checktotal(stack)) //fase 1 mi metto insisme tutti i conseguenziali
 	{
-		stack->tmp = 2000000;
+		stack->move = 2000000;
 		k = 0;
 		while (k <= stack->last_b)
 		{
@@ -87,6 +87,7 @@ void choosenumbers0(t_stack *stack)
 	}
 	while (!finalpush(stack))
 	{
+		stack->move = 2000000;
 		k = 0;
 		while (k <= stack->last_b)//fase 2, metto a posto gli array indpendentemente
 		{
@@ -94,9 +95,9 @@ void choosenumbers0(t_stack *stack)
 			k++;
 		}
 		k = 0;
-		while (k <= stack->last_b)
+		while (k <= stack->last_a)
 		{
-			mosse2(stack->b[k], stack);
+			mosse2(stack->a[k], stack);
 			k++;
 		}
 		azionamosse
@@ -122,7 +123,7 @@ int calculatestacks(int x, int y, t_stack *stack)
 	while (i <= stack->last_a)
 	{
 		if (stack->a[i] == x || stack->a[i] == y)
-			 stk += 10;
+			 stk += 10 ;
 		i++;
 	}
 	i = 0;
@@ -171,8 +172,6 @@ void smistamento2(int x, int y, t_stack *stack)
 //trova la posizione a e b nei due stack
 void positionsdouble(int x, int y, t_stack *stack)
 {
-	int i;
-	i = 0;
 	while (i <= stack->last_a)
 	{
 		if (stack->a[i] == x || stack->a[i] == y)
@@ -182,24 +181,25 @@ void positionsdouble(int x, int y, t_stack *stack)
 		}
 		i++;
 	}
-	while (i <= stack->last_b)
+	while (k <= stack->last_b)
 	{
 		if (stack->b[k] == x || stack->b[k] == y)
 		{
 			stack->posb = k;
 			break;
 		}
-		i++;
+		k++:
 	}
 }
-////////da finire
+////////il sistema di pos a e buggato fortegit
 
 void doublemoves(int x, int y, t_stack *stack)
 {
 	positionsdouble(x, y, stack);
 	if (stack->posa > stack->posb)
 	{
-		if (stack->tmp > stack->posa);
+		if (stack->tmp > stack->posa)
+
 	}
 	else if (stack->a[stack->posa] < stack->b[stack->posb] && stack->posa > stack->posb)
 	{
@@ -221,9 +221,10 @@ void doublemoves(int x, int y, t_stack *stack)
 	}
 }
 
-int numpos(t_stack *stack)
+void setall(t_stack *stack)
 {
-
+	stack->defa = stack->posa; //perche non è stato pushato
+	stack->defb = stack->posb;
 }
 
 
