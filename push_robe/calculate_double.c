@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:08:01 by matteocamil       #+#    #+#             */
-/*   Updated: 2024/01/10 18:41:43 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/10 20:40:47 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void choosenumbers0(t_stack *stack)
 
 	while (!checktotal(stack)) //fase 1 mi metto insisme tutti i conseguenziali
 	{
-		stack->move = 2000000;
+		stack->mosse = 2000000;
 		k = 0;
 		while (k <= stack->last_b)
 		{
@@ -87,19 +87,20 @@ void choosenumbers0(t_stack *stack)
 	}
 	while (!finalpush(stack))
 	{
-		stack->move = 2000000;
+		stack->mosse = 2000000;
 		k = 0;
+
+		while (k <= stack->last_a)
+		{
+			mosse2(stack->a[k], stack);
+			k++;
+		}
 		while (k <= stack->last_b)//fase 2, metto a posto gli array indpendentemente
 		{
 			mosse2(stack->b[k], stack);
 			k++;
 		}
 		k = 0;
-		while (k <= stack->last_a)
-		{
-			mosse2(stack->a[k], stack);
-			k++;
-		}
 		azionamosse
 	}
 	while (stack->last_b != 0)// fase 3 me metto a pushare tutto ordinato nell´altro stack
@@ -172,6 +173,7 @@ void smistamento2(int x, int y, t_stack *stack)
 //trova la posizione a e b nei due stack
 void positionsdouble(int x, int y, t_stack *stack)
 {
+	int k
 	while (i <= stack->last_a)
 	{
 		if (stack->a[i] == x || stack->a[i] == y)
@@ -188,7 +190,7 @@ void positionsdouble(int x, int y, t_stack *stack)
 			stack->posb = k;
 			break;
 		}
-		k++:
+		k++;
 	}
 }
 ////////il sistema di pos a e buggato fortegit
@@ -223,7 +225,7 @@ void doublemoves(int x, int y, t_stack *stack)
 
 void setall(t_stack *stack)
 {
-	stack->defa = stack->posa; //perche non è stato pushato
+	stack->defa = stack->posa;
 	stack->defb = stack->posb;
 }
 

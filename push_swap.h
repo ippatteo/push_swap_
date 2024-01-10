@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2023/12/30 16:30:09 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/10 18:04:48 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,19 @@ typedef struct s_stack
     int move;
     int posa;
     int posb;
+	int defm;
     int defa;
     int defb;
     int cmp;
-    int tmp;
-	int min;
-	int max;
-	int	stck;
-	int	mid;
-	int error;
+    int tmp; //per renum
+	int tmp2; //per renum
+	int tmpp2; //per renum
+	int limit; // per renum
+    int min;
+	int mid;
+    int max;
+	int stck;
+	int i; //per sotituire gli indici in generale
 }	t_stack;
 
 int		checkna(int x, t_stack *stack);

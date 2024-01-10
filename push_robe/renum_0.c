@@ -1,30 +1,16 @@
-typedef struct s_stack
-{
-	int	*a;
-	int	*b;
-    int mosse;
-    int *copy;
-    int last_a;
-    int last_b;
-    int move;
-    int posa;
-    int posb;
-	int defm;
-    int defa;
-    int defb;
-    int cmp;
-    int tmp; //per renum
-	int tmp2; //per renum
-	int tmpp2; //per renum
-	int limit; // per renum
-    int min;
-	int mid;
-    int max;
-	int stck;
-	int i; //per sotituire gli indici in generale
-}	t_stack;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   renum_0.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 18:05:30 by mcamilli          #+#    #+#             */
+/*   Updated: 2024/01/10 18:05:46 by mcamilli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
+#include "../push_swap.h"
 
 void renum(t_stack *stack, int ac)
 {
@@ -42,7 +28,7 @@ void renum(t_stack *stack, int ac)
             stack->i++;
         }
         stack->tmp++;
-    }   
+    }
 }
 
 
@@ -85,17 +71,9 @@ void renum2(t_stack *stack, int ac, int max)
             stack->i++;
         }
         stack->tmp++;
-        stack->a[stack->tmpp2] = stack->tmp; 
+        stack->a[stack->tmpp2] = stack->tmp;
     }
     stack->tmp = stack->min;
     stack->max = stack->limit;
 }
 
-//funzioni per versione alternativa di renum
-void lookingfor(t_stack *stack, int stack->tmp2, int a)
-{
-     while (stack->i <= ac - 2)
-    {
-        if (stack->copy[stack->i] = stack->tmp2)
-        {
-    
