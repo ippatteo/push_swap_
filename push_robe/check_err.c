@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2023/12/30 16:54:23 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:37:30 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int checkdoubles(t_stack *stack)
 {
 	int k;
+
 	int i;
 	int z;
 
