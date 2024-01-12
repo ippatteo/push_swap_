@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/11 17:49:36 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:19:12 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,16 @@ int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 		return (stack->max);
 	while (i <= stack->last_b)
 	{
-		if (stack->b[0])
+		if (num > stack->b[0] && num < stack->b[stack->last_b])
+			return(stack->b[0]);
+		if (num < stack->b[i] && num > stack->b[i + 1])
+			return (stack->b[i]);
 		i++;
 	}
-	while (k <= stack->last_b)
-	{
-		if ()
-			stack->posa = k ;
-		if (stack->b[k] == x || stack->b[k] == y)
-			stack->posb = k ;
-		k++;
-	}
+	return (-1);
 }
 
-int find_posb(int x, t_stack *stack)
+int find_posb(int x, t_stack *stack) //trova la pos che devo far diventare 0
 {
 	int i;
 
@@ -78,3 +74,5 @@ int find_posb(int x, t_stack *stack)
 	}
 	return (-1);
 }
+
+
