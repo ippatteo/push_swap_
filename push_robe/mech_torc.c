@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/13 16:06:12 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:22:05 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,21 @@ void ft_updown(t_stack *stack)
 		ft_rb(stack);
 	i = stack->last_a - stack->defa + 1;
 	while (i--)
-		ft_rb(stack);
+		ft_rra(stack);
+	ft_pa(stack);
+}
 
 void ft_downup(t_stack *stack)
+
+{
+	int i;
+
+	i = stack->last_b - stack->defb + 1;
+	while (i--)
+		ft_rrb(stack);
+	i = stack->defa;
+	while (i--)
+		ft_ra(stack);
+	ft_pa(stack);
+}
+
