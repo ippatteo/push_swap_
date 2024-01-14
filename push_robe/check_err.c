@@ -6,23 +6,22 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/11 15:37:30 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:19:52 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int checkdoubles(t_stack *stack)
+int checkdoubles(int ac, t_stack *stack)
 {
 	int k;
-
 	int i;
 	int z;
 
 	k = 0;
 	z = 0;
 	i = stack->a[z];
-	while (z < stack->max)
+	while (z < ac - 1)
 	{
 		while (k <= stack->last_a)
 		{
@@ -80,9 +79,9 @@ int	ft_atoi(char *str, t_stack *stack)
 		stack->error = 1;
 	return (r * s);
 }
-void error(t_stack *stack)
+void error(int ac, t_stack *stack)
 {
-	if (stack->error == 1 || checkdoubles(stack))
+	if (stack->error == 1 || checkdoubles(ac, stack))
 	{
 		write(2, "Error\n", 6);
 		ft_exit(stack);

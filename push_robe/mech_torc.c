@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/14 19:37:45 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:27:25 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void start_push(t_stack *stack)
 	ft_pb(stack);
 	ft_pb(stack);
 	if (stack->b[0] < stack->b[1])
-		ft_swap(stack);
+		ft_sb(stack);
 }
 
 void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
@@ -48,8 +48,8 @@ int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 
 	i = 0;
 	takevalues(stack);
-	if (num < stack->min || num > stack->max)
-		return (stack->max);
+	if (num < stack->minb || num > stack->maxb)
+		return (stack->maxb);
 	while (i <= stack->last_b)
 	{
 		if (num > stack->b[0] && num < stack->b[stack->last_b])
@@ -68,7 +68,7 @@ int find_posb(int x, t_stack *stack) //trova la pos che devo far diventare 0
 	i = 0;
 	while (i <= stack->last_b)
 	{
-		if (stack->b[i] = x)
+		if (stack->b[i] == x)
 			return (i);
 		i++;
 	}
@@ -247,7 +247,7 @@ void mecha_torc(t_stack *stack)
 
 	k = 0;
 	start_push(stack);
-	while (stack->last_a != 0) 
+	while (stack->last_a != 0)
 	{
 		stack->mosse = 2000000;
 		k = 0;

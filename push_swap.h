@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/12 13:19:02 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:16:15 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,46 +27,39 @@ typedef struct s_stack
 	int	*a;
 	int	*b;
     int mosse; //numero mosse che usa il pattern
-    int *copy;
     int last_a;
     int last_b;
     int move; // id della mossa
-    int posa;
-    int posb;
-	int defm;
+    //int posa;
+    //int posb;
     int defa;
     int defb;
-    int cmp;
-    int tmp; //per renum
-	int tmp2; //per renum
-	int tmpp2; //per renum
-	int limit; // per renum
-    int min;
-	int mid;
-    int max;
+	int minb;
+	int maxb;
+	int error;
 	int stck;
-	int i; //per sotituire gli indici in generale
 }	t_stack;
 
-int		checkna(int x, t_stack *stack);
-void	ordinededdio(t_stack *stack, int ac);
-void decide(t_stack *stack);
-int controldisord_rra(t_stack *stack);
-int controldisord_rrb(t_stack *stack);
-int controldisord_rrr(t_stack *stack);
-int controldisord_rr(t_stack *stack);
-int controldisord_rb(t_stack *stack);
-int controldisord_ra(t_stack *stack);
-int controldisord_pb(t_stack *stack);
-int controldisord_pa(t_stack *stack);
-int controldisord_ss(t_stack *stack);
-int controldisord_sb(t_stack *stack);
-int controldisord_sa(t_stack *stack);
-int controldisord(t_stack *stack);
- void bubble(t_stack *stack);
-int controlarray(int *i, t_stack *stack);
-void bubble(t_stack *stack);
-void renum(t_stack *stack, int ac);
+void mecha_torc(t_stack *stack);
+void ft_downup(t_stack *stack);
+void ft_updown(t_stack *stack);
+void ft_downdownaminb(t_stack *stack);
+void ft_downdownamagb(t_stack *stack);
+void ft_upupaminb(t_stack *stack);
+void ft_upupamagb(t_stack *stack);
+void movesinuse(t_stack *stack);
+void find_move(int posb, int posa, t_stack *stack);
+void setall(int posb, int posa, t_stack *stack);
+int find_posb(int x, t_stack *stack);
+int find_num(int num, t_stack *stack);
+void	takevalues(t_stack *stack);
+void	start_push(t_stack *stack);
+void	error(int ac, t_stack *stack);
+int		ft_atoi(char *str, t_stack *stack);
+int		ft_isdigit(int c);
+void	ft_exit(t_stack *stack);
+int		checkdoubles(int ac, t_stack *stack);
+void	renum(t_stack *stack, int ac);
 void	printarray(int *i, t_stack *stack);
 void	takeints(t_stack *stack, int ac, char **av);
 int	ft_rra(t_stack *stack);
@@ -80,5 +73,4 @@ int	ft_sb(t_stack *stack);
 int	ft_ss(t_stack *stack);
 int	ft_pa(t_stack *stack);
 int	ft_pb(t_stack *stack);
-int choosenumbers(t_stack *stack);
 #endif
