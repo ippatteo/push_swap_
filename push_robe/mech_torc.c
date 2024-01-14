@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/14 20:27:25 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:36:58 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ void mecha_torc(t_stack *stack)
 		k = 0;
 		while (k <= stack->last_a)
 		{
-			find_move(find_pos(find_num(stack->a[k], stack), stack), stack->a[k], stack);
+			find_move(find_posb(find_num(stack->a[k], stack), stack), stack->a[k], stack);
 			k++;
 		}
 		movesinuse(stack);

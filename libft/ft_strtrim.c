@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:07:07 by mcamilli          #+#    #+#             */
-/*   Updated: 2023/09/22 12:34:48 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:42:59 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	len;
 	size_t	cazzo;
 
+	cazzo = 0;
 	if (!s1 || !set)
 		return (NULL);
 	if (srch(s1, set) == -1)

@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/14 20:17:35 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:58:35 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	main(int ac, char **av)
 
 	if (ac >= 2)
 	{
-		points(&stack, ac);
 		if (ac > 2)
 			takeints(&stack, ac, av);
 		else if (ac == 2)
 			return (0); //per ora lasciamo cosi
-		errors(ac, &stack);
+		error(ac, &stack);
 		//renum(&stack, ac);
+		stack.error = 0;
 		stack.mosse = 0;
 		mecha_torc(&stack);
     	//ft_printf("\ndisordine = %d\n", controldisord(&stack));
