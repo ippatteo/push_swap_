@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/13 16:22:05 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/14 19:37:45 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 			return (stack->b[i]);
 		i++;
 	}
-	return (-1);
+	return (42);
 }
 
 int find_posb(int x, t_stack *stack) //trova la pos che devo far diventare 0
@@ -136,27 +136,27 @@ void movesinuse(t_stack *stack)
 {
 	if (stack->move == 1 && stack->defb << stack->defa)
 	{
-
+		ft_upupamagb(stack);
 	}
 	if (stack->move == 1 && stack->defb >> stack->defa)
 	{
-
+		ft_upupaminb(stack);
 	}
 	if (stack->move == 2 && stack->defb << stack->defa)
 	{
-
+		ft_downdownamagb(stack);
 	}
 	if (stack->move == 2 && stack->defb << stack->defa)
 	{
-
+		ft_downdownaminb(stack);
 	}
 	if (stack->move == 3)
 	{
-
+		ft_updown(stack);
 	}
 	if (stack->move == 4)
 	{
-
+		ft_downup(stack);
 	}
 }
 
@@ -170,7 +170,7 @@ void ft_upupamagb(t_stack *stack)
 	i = stack->defa - stack->defb;
 	while (i--)
 	 ft_ra(stack);
-	ft_pa(stack)
+	ft_pa(stack);
 }
 
 void ft_upupaminb(t_stack *stack)
@@ -210,7 +210,7 @@ void ft_downdownaminb(t_stack *stack)
 	i = (stack->last_a - stack->defa + 1) - (stack->last_b - stack->defb + 1);
 	while (i--)
 		ft_rra(stack);
-	ft_pa(stack);
+	ft_pb(stack);
 
 }
 
@@ -224,7 +224,7 @@ void ft_updown(t_stack *stack)
 	i = stack->last_a - stack->defa + 1;
 	while (i--)
 		ft_rra(stack);
-	ft_pa(stack);
+	ft_pb(stack);
 }
 
 void ft_downup(t_stack *stack)
@@ -238,6 +238,27 @@ void ft_downup(t_stack *stack)
 	i = stack->defa;
 	while (i--)
 		ft_ra(stack);
-	ft_pa(stack);
+	ft_pb(stack);
+}
+
+void mecha_torc(t_stack *stack)
+{
+	int k;
+
+	k = 0;
+	start_push(stack);
+	while (stack->last_a != 0) 
+	{
+		stack->mosse = 2000000;
+		k = 0;
+		while (k <= stack->last_a)
+		{
+			find_move(find_pos(find_num(stack->a[k], stack), stack), stack->a[k], stack);
+			k++;
+		}
+		movesinuse(stack);
+	}
+	while (stack->last_b != 0)
+		ft_pa(stack);
 }
 
