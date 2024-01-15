@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/14 20:58:35 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:47:23 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 
 	if (ac >= 2)
 	{
+		stack.last_a = -1;
+		stack.last_b = -1;
 		if (ac > 2)
 			takeints(&stack, ac, av);
 		else if (ac == 2)
@@ -59,7 +61,7 @@ void	takeints(t_stack *stack, int ac, char **av)
 		stack->last_a = j;
 		j++;
 	}
-    stack->last_b = 0;
+    stack->last_b = -1;
 }
 
 void	printarray(int *i, t_stack *stack)

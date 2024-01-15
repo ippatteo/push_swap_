@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/14 21:00:34 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:08:02 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct s_stack
 {
 	int	*a;
 	int	*b;
-    int mosse; //numero mosse che usa il pattern
+    int mosse;
+	int counterm;
     int last_a;
     int last_b;
     int move; // id della mossa
