@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/15 12:08:02 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:49:05 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_stack
 	int error;
 	int stck;
 }	t_stack;
-
+void	printarrayb(int *i, t_stack *stack);
 void mecha_torc(t_stack *stack);
 void ft_downup(t_stack *stack);
 void ft_updown(t_stack *stack);

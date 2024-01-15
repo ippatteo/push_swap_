@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:31:41 by mcamilli          #+#    #+#             */
-/*   Updated: 2023/12/30 14:08:18 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:07:50 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ int	ft_rrb(t_stack *stack)
 
 	tmp = stack->b[stack->last_b];
 	len = stack->last_b;
-	while (len-- > 0)
+	while (len > 0)
+	{
 		stack->b[len] = stack->b[len - 1];
+		len--;
+	}
 	stack->b[0] = tmp;
 	write(1, "rrb\n", 4);
         stack->mosse++;
@@ -51,12 +54,12 @@ int	ft_rrr(t_stack *stack)
 	int	len;
 	int	tmp;
 
-	tmp = stack->a[stack->last_a - 1];
+	tmp = stack->a[stack->last_a];
 	len = stack->last_a;
 	while (len-- > 0)
 		stack->a[len] = stack->a[len - 1];
 	stack->a[0] = tmp;
-	tmp = stack->b[stack->last_b - 1];
+	tmp = stack->b[stack->last_b];
 	len = stack->last_b;
 	while (len-- > 0)
 		stack->b[len] = stack->b[len - 1];

@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/15 15:19:26 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:40:48 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void start_push(t_stack *stack)
 {
 	ft_pb(stack);
+	//printarrayb(stack->b, stack);
+	//printf("\n");
+	//printarray(stack->a, stack);
 	ft_pb(stack);
 	if (stack->b[0] < stack->b[1])
 		ft_sb(stack);
+	//printarrayb(stack->b, stack);
 }
 
 void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
@@ -27,43 +31,51 @@ void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
 	i = 0;
 	stack->minb = stack->b[0];
 	if (stack->last_b < 0)
+	{
+		//printf("porcoddio takevalues\n");
 		ft_exit(stack);
+	}
 	while (i <= stack->last_b)
 	{
 		if (stack->b[i] < stack->minb)
 			stack->minb = stack->b[i];
 		i++;
 	}
+	//printf("stack last b : %d\n", stack->last_b);
+	//printf("stack minbinwhile : %d\n", stack->minb);
+	//printf("stack->b[stack->last_b] : %d\n", stack->b[stack->last_b]);
+	//printarrayb(stack->b, stack);
+	//printf("\n");
+	//printarray(stack->a, stack);
 	i = 0;
 	stack->maxb = stack->b[0];
 	while (i <= stack->last_b)
 	{
 		if (stack->b[i] > stack->maxb)
 			stack->maxb = stack->b[i];
+
 		i++;
 	}
+	//printf("stack maxbinwhile : %d\n", stack->maxb);
+	//printarrayb(stack->b, stack);
 }
 
 int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 {
 	int i;
 
-	i = 0;
-
-	takevalues(stack);
-		printf("stack maxb : %d\n", stack->maxb);
-		printf("stack posb : %d\n", find_posb(stack->maxb, stack));
+	i = 1;
 	if (num < stack->minb || num > stack->maxb)
 		return (find_posb(stack->maxb, stack));
 	while (i <= stack->last_b)
 	{
 		if (num > stack->b[0] && num < stack->b[stack->last_b])
 			return(0);
-		printf("stack->b[stack->last_b] %d\n stack maxb : %d\n", stack->b[stack->last_b], stack->maxb);
-		if (num < stack->b[i] && num > stack->b[i + 1])
-			return (i + 1);
+		if (num > stack->b[i] && num < stack->b[i - 1])
+			return (i);
 		i++;
 	}
+	printf("porcoddio findnum\n");
 	ft_exit(stack);
 	return (0);
 }
@@ -264,18 +276,21 @@ void mecha_torc(t_stack *stack)
 	start_push(stack);
 	while (stack->last_a != -1)
 	{
+		takevalues(stack);
 		stack->counterm = 2000000;
 		k = 0;
 		while (k <= stack->last_a)
 		{
 
 			i = find_num(stack->a[k], stack);
-			printf("inwhile\n");
+			//printf("inwhile\n");
 			find_move(i, k, stack);
 			k++;
 		}
-		printf("move = %d\nposa = %d\nposb = %d\nlasta = %d\nlastb = %d\n", stack->move, stack->defa, stack->defb, stack->last_a, stack->last_b);
+		//printf("move = %d\nposa = %d\nposb = %d\nlasta = %d\nlastb = %d\n", stack->move, stack->defa, stack->defb, stack->last_a, stack->last_b);
 		movesinuse(stack);
+		printarrayb(stack->b, stack);
+		printarray(stack->a, stack);
 	}
 	while (stack->last_b != -1)
 		ft_pa(stack);
