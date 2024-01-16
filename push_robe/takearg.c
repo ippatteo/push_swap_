@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 17:13:35 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/16 21:17:00 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char **av)
 		stack.error = 0;
 		stack.mosse = 0;
 		stack.maxb = 0;
+		ft_pb(&stack);
+		ft_pb(&stack);
 		mecha_torc(&stack);
 		//ft_pb(&stack);
 		//ft_pb(&stack);
@@ -43,6 +45,8 @@ int	main(int ac, char **av)
     	//ft_printf("\ndisordine = %d\n", controldisord(&stack));
     	//ft_printf("mosse = %d\n", stack.mosse);
 		return (0);
+
+		// ra rb pa pb
 	}
 	else
 	{

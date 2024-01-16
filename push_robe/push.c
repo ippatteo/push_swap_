@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:30:52 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 16:22:35 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:01:13 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_pa(t_stack *stack)
 	stack->last_b--;
 	write(1, "pa\n", 3);
 	stack->mosse++;
+	//printarray(stack->a, stack);
+	//printarrayb(stack->b, stack);
 	return (1);
 }
 
@@ -57,5 +59,14 @@ int	ft_pb(t_stack *stack)
 	stack->last_a--;
     stack->mosse++;
 	write(1, "pb\n", 3);
+	//printarray(stack->a, stack);
+	//printarrayb(stack->b, stack);
+	//ft_cazzo(stack);
 	return (1);
+}
+void	ft_cazzo(t_stack *stack)
+{
+	if (!(stack->b[0] < stack->b[stack->last_b] && stack->b[0] > stack->b[1]))
+		printf("cazzo");
+	return;
 }

@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 17:11:18 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/16 21:16:15 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 void start_push(t_stack *stack)
 {
 	ft_pb(stack);
-	//printarrayb(stack->b, stack);
-	//printf("\n");
-	//printarray(stack->a, stack);
 	ft_pb(stack);
-	if (stack->b[0] < stack->b[1])
-		ft_sb(stack);
-	//printarrayb(stack->b, stack);
 }
 
 void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
@@ -29,14 +23,12 @@ void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
 	int i;
 
 	i = 0;
+	if (stack->b[0] == -1)
+		return;
 	stack->minb = stack->b[0];
-	if (stack->last_b < 0)
-	{
-		//printf("porcoddio takevalues\n");
-		ft_exit(stack);
-	}
 	while (i <= stack->last_b)
 	{
+
 		if (stack->b[i] < stack->minb)
 			stack->minb = stack->b[i];
 		i++;
@@ -51,6 +43,7 @@ void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
 	stack->maxb = stack->b[0];
 	while (i <= stack->last_b)
 	{
+
 		if (stack->b[i] > stack->maxb)
 			stack->maxb = stack->b[i];
 
@@ -103,6 +96,7 @@ void setall(int posb, int posa, t_stack *stack)
 
 void find_move(int posb, int posa, t_stack *stack)
 {
+
 	if (posb <= posa)
 	{
 		if (stack->counterm > posa + 1) //upup
@@ -111,11 +105,21 @@ void find_move(int posb, int posa, t_stack *stack)
 			stack->move = 1;
 			setall(posb, posa, stack);
 		}
-		if (stack->counterm > (stack->last_a - posa + 1) +
-		((stack->last_b - posb + 1) - (stack->last_a - posa + 1)) + 1) //down down
+	}
+	if (stack->last_b - posb <= stack->last_a - posa) //down down
 		{
-			stack->counterm = (stack->last_b - posb + 1) +
-			((stack->last_a - posa + 1) - (stack->last_b - posb + 1)) + 1;
+			if (stack->counterm > stack->last_a - posa + 2)
+			{
+				stack->counterm = stack->last_a - posa + 2;
+				stack->move = 2;
+				setall(posb, posa, stack);
+			}
+		}
+	if (stack->last_b - posb > stack->last_a - posa) //down down
+	{
+		if (stack->counterm > stack->last_b - posb + 2)
+		{
+			stack->counterm = stack->last_b - posb + 2;
 			stack->move = 2;
 			setall(posb, posa, stack);
 		}
@@ -126,14 +130,6 @@ void find_move(int posb, int posa, t_stack *stack)
 		{
 			stack->counterm = posb + 1;
 			stack->move = 1;
-			setall(posb, posa, stack);
-		}
-		if (stack->counterm > (stack->last_b - posb + 1) +
-		((stack->last_a - posa + 1) - (stack->last_b - posb + 1)) + 1) //down down
-		{
-			stack->counterm = (stack->last_b - posb + 1) +
-			((stack->last_a - posa + 1) - (stack->last_b - posb + 1)) + 1;
-			stack->move = 2;
 			setall(posb, posa, stack);
 		}
 	}
@@ -163,11 +159,11 @@ void movesinuse(t_stack *stack)
 	{
 		ft_upupaminb(stack);
 	}
-	if (stack->move == 2 && stack->defb < stack->defa)
+	if (stack->move == 2 && stack->last_b - stack->defb <= stack->last_a - stack->defa)
 	{
 		ft_downdownamagb(stack);
 	}
-	if (stack->move == 2 && stack->defb > stack->defa)
+	if (stack->move == 2 && stack->last_b - stack->defb > stack->last_a - stack->defa)
 	{
 		ft_downdownaminb(stack);
 	}
@@ -186,13 +182,17 @@ void ft_upupamagb(t_stack *stack)
 	int i;
 
 	i = stack->defb;
-	while (i-- > 0)
+	while (i > 0)
 	{
 		ft_rr(stack);
+		i--;
 	}
 	i = stack->defa - stack->defb;
-	while (i-- > 0)
+	while (i > 0)
+	{
 		ft_ra(stack);
+		i--;
+	}
 	ft_pb(stack);
 }
 
@@ -201,11 +201,17 @@ void ft_upupaminb(t_stack *stack)
 	int i;
 
 	i = stack->defa;
-	while (i-- > 0)
+	while (i > 0)
+	{
 		ft_rr(stack);
+		i--;
+	}
 	i = stack->defb - stack->defa;
-	while (i-- > 0)
+	while (i > 0)
+	{
 		ft_rb(stack);
+		i--;
+	}
 	ft_pb(stack);
 }
 
@@ -213,28 +219,46 @@ void ft_downdownamagb(t_stack *stack)
 {
 	int i;
 
-	i = stack->last_a - stack->defa + 1;
-	while (i-- > 0)
+	i = stack->last_b - stack->defb + 1;
+	if (stack->last_a - stack->defa == stack->last_b - stack->defb)
+	{
+		while (i)
+		{
+			ft_rrr(stack);
+			return;
+		}
+	}
+	while (i > 0)
+	{
 		ft_rrr(stack);
-	i = (stack->last_b - stack->defb + 1) - (stack->last_a - stack->defa + 1);
-	while (i-- > 0)
-		ft_rrb(stack);
+		i--;
+	}
+	i = (stack->last_a - stack->defa + 1) - (stack->last_b - stack->defb + 1);
+	while (i > 0)
+	{
+		ft_rra(stack);
+		i--;
+	}
 	ft_pb(stack);
-
 }
 
 void ft_downdownaminb(t_stack *stack)
 {
 	int i;
 
-	i = stack->last_b - stack->defb + 1;
-	while (i-- > 0)
+	i = stack->last_a - stack->defa + 1;
+	while (i > 0)
+	{
 		ft_rrr(stack);
-	i = (stack->last_a - stack->defa + 1) - (stack->last_b - stack->defb + 1);
-	while (i-- > 0)
-		ft_rra(stack);
+		i--;
+	}
+	i = (stack->last_b - stack->defb + 1) - (stack->last_a - stack->defa + 1);
+	while (i > 0)
+	{
+		ft_rrb(stack);
+		i--;
+	}
 	ft_pb(stack);
-
 }
 
 void ft_updown(t_stack *stack)
@@ -242,11 +266,17 @@ void ft_updown(t_stack *stack)
 	int i;
 
 	i = stack->defb;
-	while (i-- > 0)
+	while (i > 0)
+	{
 		ft_rb(stack);
+		i--;
+	}
 	i = stack->last_a - stack->defa + 1;
-	while (i-- > 0)
+	while (i > 0)
+	{
 		ft_rra(stack);
+		i--;
+	}
 	ft_pb(stack);
 }
 
@@ -256,13 +286,17 @@ void ft_downup(t_stack *stack)
 	int i;
 
 	i = stack->last_b - stack->defb + 1;
-	while (i-- > 0)
+	while (i > 0)
 	{
 		ft_rrb(stack);
+		i--;
 	}
 	i = stack->defa;
-	while (i-- > 0)
+	while (i > 0)
+	{
 		ft_ra(stack);
+		i--;
+	}
 	ft_pb(stack);
 }
 
@@ -273,15 +307,13 @@ void mecha_torc(t_stack *stack)
 
 	i = 0;
 	k = 0;
-	start_push(stack);
-	while (stack->last_a != -1)
+	while (stack->last_a > -1)
 	{
 		takevalues(stack);
 		stack->counterm = 2000000;
 		k = 0;
 		while (k <= stack->last_a)
 		{
-
 			i = find_num(stack->a[k], stack);
 			//printf("inwhile\n");
 			find_move(i, k, stack);

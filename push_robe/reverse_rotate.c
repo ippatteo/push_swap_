@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:31:41 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 16:31:48 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:10:10 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	ft_rrb(t_stack *stack)
 	stack->b[0] = tmp;
 	write(1, "rrb\n", 4);
         stack->mosse++;
+	//printarray(stack->a, stack);
+	//printarrayb(stack->b, stack);
 	return (1);
 }
 
@@ -72,5 +74,7 @@ int	ft_rrr(t_stack *stack)
 	stack->b[0] = tmp;
 	write(1, "rrr\n", 4);
         stack->mosse++;
+	//printarray(stack->a, stack);
+	//printarrayb(stack->b, stack);
 	return (1);
 }
