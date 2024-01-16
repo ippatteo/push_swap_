@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:31:41 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/15 20:07:50 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:31:48 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,19 @@ int	ft_rrr(t_stack *stack)
 
 	tmp = stack->a[stack->last_a];
 	len = stack->last_a;
-	while (len-- > 0)
+	while (len > 0)
+	{
 		stack->a[len] = stack->a[len - 1];
+		len--;
+	}
 	stack->a[0] = tmp;
 	tmp = stack->b[stack->last_b];
 	len = stack->last_b;
-	while (len-- > 0)
+	while (len > 0)
+	{
 		stack->b[len] = stack->b[len - 1];
+		len--;
+	}
 	stack->b[0] = tmp;
 	write(1, "rrr\n", 4);
         stack->mosse++;

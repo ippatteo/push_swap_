@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/15 20:40:48 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:11:18 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,11 +289,8 @@ void mecha_torc(t_stack *stack)
 		}
 		//printf("move = %d\nposa = %d\nposb = %d\nlasta = %d\nlastb = %d\n", stack->move, stack->defa, stack->defb, stack->last_a, stack->last_b);
 		movesinuse(stack);
-		printarrayb(stack->b, stack);
-		printarray(stack->a, stack);
 	}
-	while (stack->last_b != -1)
-		ft_pa(stack);
+	finalmove(stack);
 }
 /*void mecha_torc(t_stack *stack)
 {
@@ -321,3 +318,24 @@ void mecha_torc(t_stack *stack)
 		ft_pa(stack);
 }*/
 
+void	finalmove(t_stack *stack)
+{
+	int i;
+
+	takevalues(stack);
+	i = find_posb(stack->maxb, stack);
+	if (i <= stack->last_b - i + 1)
+	{
+		while (i--)
+			ft_rb(stack);
+	}
+	else
+	{
+		i = stack->last_b - i + 1;
+		while (i--)
+			ft_rrb(stack);
+	}
+	while (stack->last_b != -1)
+		ft_pa(stack);
+
+}
