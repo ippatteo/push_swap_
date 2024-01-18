@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/18 15:28:52 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:41:14 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,26 +154,32 @@ void movesinuse(t_stack *stack)
 	if (stack->move == 1 && stack->defb <= stack->defa)
 	{
 		ft_upupamagb(stack);
+		return;
 	}
 	if (stack->move == 1 && stack->defb > stack->defa)
 	{
 		ft_upupaminb(stack);
+		return;
 	}
 	if (stack->move == 2 && stack->last_b - stack->defb <= stack->last_a - stack->defa)
 	{
 		ft_downdownamagb(stack);
+		return;
 	}
 	if (stack->move == 2 && stack->last_b - stack->defb > stack->last_a - stack->defa)
 	{
 		ft_downdownaminb(stack);
+		return;
 	}
 	if (stack->move == 3)
 	{
 		ft_updown(stack);
+		return;
 	}
 	if (stack->move == 4)
 	{
 		ft_downup(stack);
+		return;
 	}
 }
 
@@ -222,11 +228,12 @@ void ft_downdownamagb(t_stack *stack)
 	i = stack->last_b - stack->defb + 1;
 	if (stack->last_a - stack->defa == stack->last_b - stack->defb)
 	{
-		while (i)
+		while (i > 0)
 		{
 			ft_rrr(stack);
-			return;
+			i--;
 		}
+		return;
 	}
 	while (i > 0)
 	{
@@ -315,12 +322,14 @@ void mecha_torc(t_stack *stack)
 		while (k <= stack->last_a)
 		{
 			i = find_num(stack->a[k], stack);
-			//printf("inwhile\n");
 			find_move(i, k, stack);
 			k++;
 		}
-		//printf("move = %d\nposa = %d\nposb = %d\nlasta = %d\nlastb = %d\n", stack->move, stack->defa, stack->defb, stack->last_a, stack->last_b);
+		// printf("stackmove = %d defa = %d defb = %d\n", stack->move, stack->defa, stack->defb);
+		// if (stack->last_a != 15)
 		movesinuse(stack);
+		// else
+		// 	break;
 	}
 	finalmove(stack);
 }
