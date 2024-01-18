@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/14 20:53:54 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/17 08:46:13 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int checkdoubles(int ac, t_stack *stack)
 {
 	int k;
-	int i;
 	int z;
 
 	k = 0;
 	z = 0;
-	i = stack->a[z];
 	while (z < ac - 1)
 	{
 		while (k <= stack->last_a)

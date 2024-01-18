@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 18:47:45 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:23:44 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_stack
 	int error;
 	int stck;
 }	t_stack;
+void controlst(t_stack *stack);
 void	ft_cazzo(t_stack *stack);
 void	finalmove(t_stack *stack);
 void	printarrayb(int *i, t_stack *stack);

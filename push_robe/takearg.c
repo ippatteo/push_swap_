@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 21:17:00 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:43:01 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,16 @@ int	main(int ac, char **av)
 		//ft_pb(&stack);
 		//ft_pb(&stack);
 		//ft_pb(&stack);
-		//ft_rrr(&stack);
+		//ft_rr
+		//r(&stack);
     	//ft_printf("\ndisordine = %d\n", controldisord(&stack));
 		//bubble(&stack);
+		printarray(stack.a, &stack);
 		//ft_printf("last a = %d\n", stack.last_a);
 		//ordinededdio(&stack, ac);
-		//printarray(stack.a, &stack);
+		controlst(&stack);
     	//ft_printf("\ndisordine = %d\n", controldisord(&stack));
-    	//ft_printf("mosse = %d\n", stack.mosse);
+    	ft_printf("mosse = %d\n", stack.mosse);
 		return (0);
 
 		// ra rb pa pb
@@ -80,7 +82,11 @@ void	printarray(int *i, t_stack *stack)
 
 	k = 0;
 	while (k <= stack->last_a)
-		ft_printf("stack a : %d \n", i[k++]);
+	{
+		ft_printf("stack a[%d] : %d \n", k, i[k]);
+		k++;
+	}
+		
 }
 
 void	printarrayb(int *i, t_stack *stack)
@@ -92,3 +98,29 @@ void	printarrayb(int *i, t_stack *stack)
 		ft_printf("stack b: %d \n", i[k++]);
 }
 
+void controlst(t_stack *stack)
+{
+	int k;
+
+	k = 0;
+	while (k <= stack->last_a)
+	{
+		if (k == 0 && stack->a[k] > stack->a[k+1])
+		{
+			printf("error stack3\n");
+			return;
+		}
+		if (k == stack->last_a && stack->a[k] < stack->a[k-1])
+		{
+			printf("error stack2\n");
+			return;
+		}
+		if (k != 0 && k != stack->last_a && stack->a[k] < stack->a[k-1])
+		{
+			printf("error stack: %d pos : %d\n", stack->a[k], k);
+			return;
+		}
+		k++;
+	}
+	printf("stack ok!\n");
+}

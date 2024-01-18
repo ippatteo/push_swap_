@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/16 21:16:15 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:28:52 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,5 +369,4 @@ void	finalmove(t_stack *stack)
 	}
 	while (stack->last_b != -1)
 		ft_pa(stack);
-
 }
