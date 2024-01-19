@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/18 17:41:14 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/19 09:49:55 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void start_push(t_stack *stack)
 {
-	ft_pb(stack);
-	ft_pb(stack);
+	if (stack->last_a > 3)
+	{
+		ft_pb(stack);
+		ft_pb(stack);
+	}
+	else if (stack->last_a == 3)
+		ft_pb(stack);
 }
 
 void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
@@ -33,12 +38,6 @@ void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
 			stack->minb = stack->b[i];
 		i++;
 	}
-	//printf("stack last b : %d\n", stack->last_b);
-	//printf("stack minbinwhile : %d\n", stack->minb);
-	//printf("stack->b[stack->last_b] : %d\n", stack->b[stack->last_b]);
-	//printarrayb(stack->b, stack);
-	//printf("\n");
-	//printarray(stack->a, stack);
 	i = 0;
 	stack->maxb = stack->b[0];
 	while (i <= stack->last_b)
@@ -49,9 +48,10 @@ void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
 
 		i++;
 	}
-	//printf("stack maxbinwhile : %d\n", stack->maxb);
-	//printarrayb(stack->b, stack);
 }
+
+
+
 
 int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 {
@@ -68,10 +68,11 @@ int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 			return (i);
 		i++;
 	}
-	printf("porcoddio findnum\n");
-	ft_exit(stack);
 	return (0);
 }
+
+
+
 
 int find_posb(int x, t_stack *stack) //trova la posb che devo far diventare 0
 {
@@ -96,7 +97,6 @@ void setall(int posb, int posa, t_stack *stack)
 
 void find_move(int posb, int posa, t_stack *stack)
 {
-
 	if (posb <= posa)
 	{
 		if (stack->counterm > posa + 1) //upup
@@ -106,6 +106,12 @@ void find_move(int posb, int posa, t_stack *stack)
 			setall(posb, posa, stack);
 		}
 	}
+	find_move_1(posb, posa, stack);
+	find_move_2(posb, posa, stack);
+}
+
+void find_move_1(int posb, int posa, t_stack *stack)
+{
 	if (stack->last_b - posb <= stack->last_a - posa) //down down
 		{
 			if (stack->counterm > stack->last_a - posa + 2)
@@ -124,6 +130,10 @@ void find_move(int posb, int posa, t_stack *stack)
 			setall(posb, posa, stack);
 		}
 	}
+}
+
+void find_move_2(int posb, int posa, t_stack *stack)
+{
 	if (posa < posb)
 	{
 		if (stack->counterm > posb + 1) //upup
@@ -152,35 +162,17 @@ void movesinuse(t_stack *stack)
 {
 
 	if (stack->move == 1 && stack->defb <= stack->defa)
-	{
 		ft_upupamagb(stack);
-		return;
-	}
-	if (stack->move == 1 && stack->defb > stack->defa)
-	{
+	else if (stack->move == 1 && stack->defb > stack->defa)
 		ft_upupaminb(stack);
-		return;
-	}
-	if (stack->move == 2 && stack->last_b - stack->defb <= stack->last_a - stack->defa)
-	{
+	else if (stack->move == 2 && stack->last_b - stack->defb <= stack->last_a - stack->defa)
 		ft_downdownamagb(stack);
-		return;
-	}
-	if (stack->move == 2 && stack->last_b - stack->defb > stack->last_a - stack->defa)
-	{
+	else if (stack->move == 2 && stack->last_b - stack->defb > stack->last_a - stack->defa)
 		ft_downdownaminb(stack);
-		return;
-	}
-	if (stack->move == 3)
-	{
+	else if (stack->move == 3)
 		ft_updown(stack);
-		return;
-	}
-	if (stack->move == 4)
-	{
+	else if (stack->move == 4)
 		ft_downup(stack);
-		return;
-	}
 }
 
 void ft_upupamagb(t_stack *stack)
@@ -325,11 +317,7 @@ void mecha_torc(t_stack *stack)
 			find_move(i, k, stack);
 			k++;
 		}
-		// printf("stackmove = %d defa = %d defb = %d\n", stack->move, stack->defa, stack->defb);
-		// if (stack->last_a != 15)
 		movesinuse(stack);
-		// else
-		// 	break;
 	}
 	finalmove(stack);
 }

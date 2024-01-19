@@ -63,7 +63,5 @@ int	ft_rr(t_stack *stack)
 	stack->b[i] = tmp;
 	write(1, "rr\n", 3);
 		stack->mosse++;
-	//printarray(stack->a, stack);
-	//printarrayb(stack->b, stack);
 	return (1);
 }
