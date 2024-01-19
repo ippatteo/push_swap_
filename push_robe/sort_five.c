@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 16:00:23 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:53:04 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void sort_three(t_stack *stack)
 		ft_sa(stack);
 		ft_ra(stack);
 	}
-	else
-		printf("ah ecco takemin %d, takemax %d", takemin(stack), takemax(stack));
+		//printf("ah ecco takemin %d, takemax %d", takemin(stack), takemax(stack));
 }
 
 void sort_four(t_stack *stack)

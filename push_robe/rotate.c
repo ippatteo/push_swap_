@@ -24,7 +24,7 @@ int	ft_ra(t_stack *stack)
 		stack->a[i] = stack->a[i + 1];
 	stack->a[i] = tmp;
 	write(1, "ra\n", 3);
-        stack->mosse++;
+		stack->mosse++;
 	return (1);
 }
 

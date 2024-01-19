@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 15:53:14 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:55:20 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ int controlst(t_stack *stack)
 		}
 		if (k != 0 && k != stack->last_a && stack->a[k] < stack->a[k-1])
 		{
-			printf("nope error pos %d\n", k);
+			//printf("nope error pos %d\n", k);
 			return(0);
 		}
 		if (stack->a[0] > stack->a[1] && stack->a[2] < stack->a[1])
 		{
-			printf("nope error pos %d\n", k);
+			//printf("nope error pos %d\n", k);
 			return(0);
 		}
 		k++;
 	}
-	printf("ok\n");
+	//printf("ok\n");
 	return (1);
 }
