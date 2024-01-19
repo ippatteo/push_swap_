@@ -6,59 +6,13 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/18 17:38:06 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:53:14 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main(int ac, char **av)
-{
-	t_stack stack;
 
-	if (ac >= 2)
-	{
-		stack.last_b = -1;
-		if (ac > 2)
-			takeints(&stack, ac, av);
-		else if (ac == 2)
-			return (0); //per ora lasciamo cosi
-		error(ac, &stack);
-		//renum(&stack, ac);
-		stack.error = 0;
-		stack.mosse = 0;
-		stack.maxb = 0;
-		ft_pb(&stack);
-		ft_pb(&stack);
-		mecha_torc(&stack);
-		//ft_pb(&stack);
-		//ft_pb(&stack);
-		//ft_pb(&stack);
-		//ft_pb(&stack);
-		//ft_pb(&stack);
-		//ft_rr
-		//r(&stack);
-    	//ft_printf("\ndisordine = %d\n", controldisord(&stack));
-		//bubble(&stack);
-		//printarray(stack.a, &stack);
-		//printarrayb(stack.b, &stack);
-
-		//ft_printf("last a = %d\n", stack.last_a);
-		//ordinededdio(&stack, ac);
-		//controlst(&stack);
-		//ft_printf("\ndisordine = %d\n", controldisord(&stack));
-		//ft_printf("mosse = %d\n", stack.mosse);
-		return (0);
-
-		// ra rb pa pb
-	}
-	else
-	{
-		//write(2, "Error\n", 6);
-		return (0);
-	}
-
-}
 
 void	takeints(t_stack *stack, int ac, char **av)
 {
@@ -103,7 +57,7 @@ void	printarrayb(int *i, t_stack *stack)
 	}
 }
 
-void controlst(t_stack *stack)
+int controlst(t_stack *stack)
 {
 	int k;
 
@@ -112,47 +66,24 @@ void controlst(t_stack *stack)
 	{
 		if (k == 0 && stack->a[k] > stack->a[k+1])
 		{
-			printf("error stack3\n");
-			return;
+			return(0);
 		}
 		if (k == stack->last_a && stack->a[k] < stack->a[k-1])
 		{
-			printf("error stack2\n");
-			return;
+			return(0);
 		}
 		if (k != 0 && k != stack->last_a && stack->a[k] < stack->a[k-1])
 		{
-			printf("error stack: %d pos : %d\n", stack->a[k], k);
-			return;
+			printf("nope error pos %d\n", k);
+			return(0);
+		}
+		if (stack->a[0] > stack->a[1] && stack->a[2] < stack->a[1])
+		{
+			printf("nope error pos %d\n", k);
+			return(0);
 		}
 		k++;
 	}
-	printf("stack ok!\n");
-}
-void controlstb(t_stack *stack)
-{
-	int k;
-
-	k = 0;
-
-	while (k <= stack->last_a)
-	{
-		if (k == 0 && stack->a[k] < stack->a[k+1])
-		{
-			printf("error stack3\n");
-			return;
-		}
-		if (k == stack->last_a && stack->a[k] < stack->a[k-1])
-		{
-			printf("error stack2\n");
-			return;
-		}
-		if (k != 0 && k != stack->last_a && stack->a[k] < stack->a[k-1])
-		{
-			printf("error stack: %d pos : %d\n", stack->a[k], k);
-			return;
-		}
-		k++;
-	}
-	printf("stack ok!\n");
+	printf("ok\n");
+	return (1);
 }

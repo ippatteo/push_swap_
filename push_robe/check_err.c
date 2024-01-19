@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/17 08:46:13 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:43:56 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	ft_exit(t_stack *stack)
 {
 	free(stack->a);
 	free(stack->b);
-	if (stack)
-		free(stack);
 	exit(0);
 }
 

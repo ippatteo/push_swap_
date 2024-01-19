@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 09:49:55 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/19 15:03:13 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ void takevalues(t_stack *stack) //a ogni giro trova il min e il max di b
 		i++;
 	}
 }
-
-
-
 
 int find_num(int num, t_stack *stack)//trova il numero sopra quale deve andare
 {
@@ -162,17 +159,35 @@ void movesinuse(t_stack *stack)
 {
 
 	if (stack->move == 1 && stack->defb <= stack->defa)
+	{
 		ft_upupamagb(stack);
+		return;
+	}
 	else if (stack->move == 1 && stack->defb > stack->defa)
+	{
 		ft_upupaminb(stack);
+		return;
+	}
 	else if (stack->move == 2 && stack->last_b - stack->defb <= stack->last_a - stack->defa)
+	{
 		ft_downdownamagb(stack);
+		return;
+	}
 	else if (stack->move == 2 && stack->last_b - stack->defb > stack->last_a - stack->defa)
+	{
 		ft_downdownaminb(stack);
+		return;
+	}
 	else if (stack->move == 3)
+	{
 		ft_updown(stack);
+		return;
+	}
 	else if (stack->move == 4)
+	{
 		ft_downup(stack);
+		return;
+	}
 }
 
 void ft_upupamagb(t_stack *stack)
