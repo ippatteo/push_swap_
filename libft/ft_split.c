@@ -6,13 +6,13 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:51:36 by mcamilli          #+#    #+#             */
-/*   Updated: 2023/04/25 11:46:37 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/20 15:03:04 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count(char const *s, char c)
+static size_t	ft_count(const char *s, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -35,17 +35,17 @@ static size_t	ft_count(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
-	char	**str;
+	char	**matrix;
 	size_t	i;
 	size_t	j;
 
 	if (!s)
 		return (NULL);
-	str = malloc(sizeof (char const *) * (ft_count(s, c) + 1));
+	matrix = malloc(sizeof (char *) * (ft_count(s, c) + 1));
 	i = 0;
-	if (!str)
+	if (!matrix)
 		return (NULL);
 	while (*s)
 	{
@@ -54,11 +54,11 @@ char	**ft_split(char const *s, char c)
 			j = 0;
 			while (*s && *s != c && ++j)
 				++s;
-			str[i++] = ft_substr(s - j, 0, j);
+			matrix[i++] = ft_substr(s - j, 0, j);
 		}
 		else
 			++s;
 	}
-	str[i] = 0;
-	return (str);
+	matrix[i] = 0;
+	return (matrix);
 }

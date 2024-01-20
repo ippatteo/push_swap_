@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 16:53:04 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/20 12:23:18 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,27 @@ int takemin(t_stack *stack) //a ogni giro trova il min e il max di b
 
 void sort_three(t_stack *stack)
 {
-	if (takemin(stack) == 1 && takemax(stack) == 2)
+	int max;
+	int min;
+
+	min = takemin(stack);
+	max = takemax(stack);
+	if (min == 1 && max == 2)
 		ft_sa(stack);
-	else if (takemin(stack) == 2 && takemax(stack) == 0)
+	else if (min == 2 && max == 0)
 	{
 		ft_sa(stack);
 		ft_rra(stack);
+		return;
 	}
-	else if (takemin(stack) == 1 && takemax(stack) == 0)
+	else if (min == 1 && max == 0)
+	{
 		ft_ra(stack);
-	else if (takemin(stack) == 2 && takemax(stack) == 1)
+		//printf("chitebbiecc");
+	}
+	else if (min == 2 && max == 1)
 		ft_rra(stack);
-	else if (takemin(stack) == 0 && takemax(stack) == 1)
+	else if (min == 0 && max == 1)
 	{
 		ft_sa(stack);
 		ft_ra(stack);

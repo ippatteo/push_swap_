@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 14:41:46 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:34:03 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_stack
 	int error;
 	int stck;
 }	t_stack;
+int splittone(char **av,t_stack *stack);
 void setmain(int ac, t_stack *stack);
 void finalrotatea(t_stack *stack);
 void sorts(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 15:55:24 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/20 15:33:30 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ int	main(int ac, char **av)
 {
 	t_stack stack;
 
+	stack.error = 0;
 	if (ac >= 2)
 	{
 		stack.last_b = -1;
 		if (ac > 2)
 			takeints(&stack, ac, av);
 		else if (ac == 2)
-			return (0);
+		{
+			if (!splittone(av, &stack))
+				return(0);
+		}
 		setmain(ac, &stack);
 		sorts(&stack);
-	//	printarray(stack.a, &stack);
-		//printarrayb(stack.b, &stack);
-	//	controlst(&stack);
+		ft_exit(&stack);
 		return (0);
 	}
 	else
@@ -41,52 +43,40 @@ int	main(int ac, char **av)
 {
 	t_stack stack;
 
+	stack.error = 0;
 	if (ac >= 2)
 	{
 		stack.last_b = -1;
 		if (ac > 2)
 			takeints(&stack, ac, av);
 		else if (ac == 2)
-			return (0); //per ora lasciamo cosi
-		if (controlst(&stack))
-		{
-			ft_exit(&stack);
-			return(0);
+			av = ft_split(*av, ' ');
+			if (!splittone(av, &stack))
+				return (0);
 		}
-		stack.error = 0;
-		error(ac, &stack);
-		stack.mosse = 0;
-		stack.maxb = 0;
-		if (stack.last_a == 1)
-		{
-			ft_sa(&stack);
-			ft_exit(&stack);
-			return (0);
-		}
-		sort(&stack);
+		setmain(ac, &stack);
+		sorts(&stack);
+		ft_exit(&stack);
 		return (0);
 	}
 	else
-	{
 		return (0);
-	}
 
 }*/
 void setmain(int ac, t_stack *stack)
 {
 	if (controlst(stack))
 		{
-			printf("uscito");
+			//printf("uscito");
 			ft_exit(stack);
 			return ;
 		}
-		stack->error = 0;
 		error(ac, stack);
 		stack->mosse = 0;
 		stack->maxb = 0;
 		if (stack->last_a == 1)
 		{
-			printf("uscito");
+			//printf("uscito");
 			ft_sa(stack);
 			ft_exit(stack);
 			return ;

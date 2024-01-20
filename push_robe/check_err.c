@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 15:43:56 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/20 12:45:59 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_atoi(char *str, t_stack *stack)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			stack->error = 1;
+				stack->error = 1;
 		r = r * 10 + str[i++] - '0';
 	}
 	if (r > 2147483647 || r < -2147483647)
@@ -77,7 +77,12 @@ int	ft_atoi(char *str, t_stack *stack)
 }
 void error(int ac, t_stack *stack)
 {
-	if (stack->error == 1 || checkdoubles(ac, stack))
+	if (stack->error == 1)
+	{
+		write(2, "Error\n", 6);
+		ft_exit(stack);
+	}
+	else if (checkdoubles(ac, stack))
 	{
 		write(2, "Error\n", 6);
 		ft_exit(stack);
