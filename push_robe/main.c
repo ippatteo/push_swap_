@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/20 16:45:16 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:00:39 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 			takeints(&stack, ac, av);
 		else if (ac == 2)
 		{
-			if (!splittone(av, &stack))
+			if (!splittone(av, &stack));
 				return(0);
 		}
 		setmain(ac, &stack);
@@ -67,7 +67,7 @@ void setmain(int ac, t_stack *stack)
 {
 	if (controlst(stack))
 		{
-			//printf("uscito");
+			printf("uscito");
 			ft_exit(stack);
 			return ;
 		}
