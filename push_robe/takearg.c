@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:05:57 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/21 19:56:25 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/21 20:07:38 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	takeints(t_stack *stack, int ac, char **av)
 
     stack->a = (int *)malloc(sizeof(int) * (ac - 1));
     stack->b = (int *)malloc(sizeof(int) * (ac - 1));
-    //stack->copy = (int *)malloc(sizeof(int) * (ac - 1));
+	//stack->copy = (int *)malloc(sizeof(int) * (ac - 1));
     j = 0;
     while (j <= ac - 2)
 	{
@@ -67,8 +67,8 @@ int takenumbers(char *avx,t_stack *stack)
 				i++;
 		}
 		else
-			return(0);		
-	} 
+			return(0);
+	}
 	return (n);
 }
 void	free_matrix(char **matrix)
@@ -112,7 +112,7 @@ int onesplit(char git add ,*av,t_stack *stack)
 	return (1);
 }
 
-int splittone(char **av,t_stack *stack)
+int splittone(char *av,t_stack *stack)
 {
 	char	**tmp;
 	int i;
@@ -121,16 +121,9 @@ int splittone(char **av,t_stack *stack)
 	tmp = NULL;
 	i = 0;
 	j = 0;
-	tmp = ft_split(av[1], ' ');
+	tmp = ft_split(av, ' ');
 	while (tmp[i] != NULL)
 		i++;
-	if (i <= 1)
-	{
-		free_matrix(tmp);
-		return (0);
-	}
-	stack->a = (int *)malloc(sizeof(int) * (i) + 1);
-	stack->b = (int *)malloc(sizeof(int) * (i) + 1);
 	while (j <= i - 1)
 	{
 		stack->a[j] = ft_atoi(tmp[j], stack);
