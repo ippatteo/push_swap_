@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:31:21 by mcamilli          #+#    #+#             */
-/*   Updated: 2023/12/30 14:08:01 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 10:49:26 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_sa(t_stack *stack)
 {
 	int		tmp;
 
-	if (!stack->a[0] || !stack->a[1])
-		return (0);
 	tmp = stack->a[0];
 	stack->a[0] = stack->a[1];
 	stack->a[1] = tmp;

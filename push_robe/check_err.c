@@ -6,20 +6,20 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/20 12:45:59 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:20:11 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int checkdoubles(int ac, t_stack *stack)
+int checkdoubles(t_stack *stack)
 {
 	int k;
 	int z;
 
 	k = 0;
 	z = 0;
-	while (z < ac - 1)
+	while (z <= stack->last_a)
 	{
 		while (k <= stack->last_a)
 		{
@@ -38,13 +38,6 @@ void	ft_exit(t_stack *stack)
 	free(stack->a);
 	free(stack->b);
 	exit(0);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
 }
 
 int	ft_atoi(char *str, t_stack *stack)
@@ -75,14 +68,14 @@ int	ft_atoi(char *str, t_stack *stack)
 		stack->error = 1;
 	return (r * s);
 }
-void error(int ac, t_stack *stack)
+void error(t_stack *stack)
 {
 	if (stack->error == 1)
 	{
 		write(2, "Error\n", 6);
 		ft_exit(stack);
 	}
-	else if (checkdoubles(ac, stack))
+	else if (checkdoubles(stack))
 	{
 		write(2, "Error\n", 6);
 		ft_exit(stack);

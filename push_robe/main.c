@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/20 17:00:39 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:23:23 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		stack.last_b = -1;
-		if (ac > 2)
-			takeints(&stack, ac, av);
-		else if (ac == 2)
-		{
-			if (!splittone(av, &stack));
-				return(0);
-		}
-		setmain(ac, &stack);
+		if (!takearg(av, ac, &stack))
+			return(0);
+		printarray(stack.a, &stack);
+		printf(" 25 main\n");
+		setmain(&stack);
+		printf(" 27 main\n");
+		
 		sorts(&stack);
 		ft_exit(&stack);
 		return (0);
@@ -63,20 +62,22 @@ int	main(int ac, char **av)
 		return (0);
 
 }*/
-void setmain(int ac, t_stack *stack)
+void setmain(t_stack *stack)
 {
 	if (controlst(stack))
 		{
-			printf("uscito");
+			printf("uscito\n");
 			ft_exit(stack);
 			return ;
 		}
-		error(ac, stack);
+		
+		error(stack);
+		printf("stack last a: %d\n", stack->last_a);
 		stack->mosse = 0;
 		stack->maxb = 0;
 		if (stack->last_a == 1)
 		{
-			//printf("uscito");
+			printf("uscito3\n");
 			ft_sa(stack);
 			ft_exit(stack);
 			return ;

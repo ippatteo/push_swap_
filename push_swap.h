@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/20 13:34:03 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:22:26 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,13 @@ typedef struct s_stack
 	int error;
 	int stck;
 }	t_stack;
+
+int takearg(char **av, int ac, t_stack *stack);
+int onesplit(char *av,t_stack *stack);
+int takenumbers(char *avx);
+int	takemalloc(int ac, char **av);
 int splittone(char **av,t_stack *stack);
-void setmain(int ac, t_stack *stack);
+void setmain(t_stack *stack);
 void finalrotatea(t_stack *stack);
 void sorts(t_stack *stack);
 void startpush(t_stack *stack);
@@ -53,7 +58,6 @@ int takemax(t_stack *stack);
 void find_move_1(int posb, int posa, t_stack *stack);
 void find_move_2(int posb, int posa, t_stack *stack);
 int controlst(t_stack *stack);
-void	ft_cazzo(t_stack *stack);
 void	finalmove(t_stack *stack);
 void	printarrayb(int *i, t_stack *stack);
 void	mecha_torc(t_stack *stack);
@@ -70,11 +74,11 @@ int		find_posb(int x, t_stack *stack);
 int		find_num(int num, t_stack *stack);
 void	takevalues(t_stack *stack);
 void	start_push(t_stack *stack);
-void	error(int ac, t_stack *stack);
+void	error(t_stack *stack);
 int		ft_atoi(char *str, t_stack *stack);
 int		ft_isdigit(int c);
 void	ft_exit(t_stack *stack);
-int		checkdoubles(int ac, t_stack *stack);
+int		checkdoubles(t_stack *stack);
 void	printarray(int *i, t_stack *stack);
 void	takeints(t_stack *stack, int ac, char **av);
 int		ft_rra(t_stack *stack);
