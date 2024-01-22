@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:30:52 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 09:20:06 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:26:38 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,4 @@ int	ft_pb(t_stack *stack)
     stack->mosse++;
 	write(1, "pb\n", 3);
 	return (1);
-}
-void	ft_cazzo(t_stack *stack)
-{
-	if (!(stack->b[0] < stack->b[stack->last_b] && stack->b[0] > stack->b[1]))
-		printf("cazzo");
-	return;
 }

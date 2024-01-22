@@ -6,13 +6,13 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/20 16:16:57 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:30:27 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int takemax(t_stack *stack) //a ogni giro trova il min e il max di b
+int takemax(t_stack *stack)
 {
 	int i;
 	int a;
@@ -30,7 +30,7 @@ int takemax(t_stack *stack) //a ogni giro trova il min e il max di b
 }
 
 
-int takemin(t_stack *stack) //a ogni giro trova il min e il max di b
+int takemin(t_stack *stack)
 {
 	int i;
 	int a;
@@ -118,53 +118,4 @@ void sort_five(t_stack *stack)
 	}
 	else if (stack->b[0] < stack->a[0] || stack->b[0] > stack->a[3])
 		ft_pa(stack);
-}
-void startpush(t_stack *stack)
-{
-	if (stack->last_a > 3)
-	{
-		ft_pb(stack);
-		ft_pb(stack);
-	}
-	else if (stack->last_a == 3)
-		ft_pb(stack);
-}
-void sorts(t_stack *stack)
-{
-	startpush(stack);
-	if(stack->last_a == 2)
-		sort_three(stack);
-	if (stack->last_b == -1)
-		return;
-	if(stack->last_a == 2 && stack->last_b == 0)
-	{
-		sort_four(stack);
-		finalrotatea(stack);
-		return;
-	}
-	if(stack->last_a == 2 && stack->last_b == 1)
-	{
-		sort_five(stack);
-		finalrotatea(stack);
-		return;
-	}
-	if (stack->last_a > 2)
-		mecha_torc(stack);
-}
-void finalrotatea(t_stack *stack)
-{
-	int i;
-
-	i = takemin(stack);
-	if (i < stack->last_a / 2)
-	{
-		while (i--)
-			ft_ra(stack);
-	}
-	else
-	{
-		i = stack->last_a - i + 1;
-		while (i--)
-			ft_rra(stack);
-	}
 }

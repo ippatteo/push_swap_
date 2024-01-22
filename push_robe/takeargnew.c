@@ -6,19 +6,13 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 11:13:15 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:00:31 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
+
 int	takemalloc(int ac, char **av)
 {
 	int j;
@@ -49,7 +43,7 @@ int takenumbers(char *avx)
 	{
 		while (avx[i] == ' ')
 		{
-			printf("spazio\n");
+			//printf("spazio\n");
 			i++;
 		}
 		if (avx[i] == '-' || avx[i] == '+')
@@ -134,31 +128,6 @@ int takearg(char **av, int ac, t_stack *stack)
 		return(0);
 	}
 
-}
-
-void	printarray(int *i, t_stack *stack)
-{
-	int k;
-
-	k = 0;
-	while (k <= stack->last_a)
-	{
-		ft_printf("stack a[%d] : %d \n", k, i[k]);
-		k++;
-	}
-
-}
-
-void	printarrayb(int *i, t_stack *stack)
-{
-	int k;
-
-	k = 0;
-	while (k <= stack->last_b)
-	{
-		ft_printf("stack b[%d] : %d \n", k, i[k]);
-		k++;
-	}
 }
 
 int controlst(t_stack *stack)

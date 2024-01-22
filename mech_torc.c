@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/19 15:03:13 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:34:59 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,103 +92,7 @@ void setall(int posb, int posa, t_stack *stack)
 	stack->defb = posb;
 }
 
-void find_move(int posb, int posa, t_stack *stack)
-{
-	if (posb <= posa)
-	{
-		if (stack->counterm > posa + 1) //upup
-		{
-			stack->counterm = posa + 1;
-			stack->move = 1;
-			setall(posb, posa, stack);
-		}
-	}
-	find_move_1(posb, posa, stack);
-	find_move_2(posb, posa, stack);
-}
 
-void find_move_1(int posb, int posa, t_stack *stack)
-{
-	if (stack->last_b - posb <= stack->last_a - posa) //down down
-		{
-			if (stack->counterm > stack->last_a - posa + 2)
-			{
-				stack->counterm = stack->last_a - posa + 2;
-				stack->move = 2;
-				setall(posb, posa, stack);
-			}
-		}
-	if (stack->last_b - posb > stack->last_a - posa) //down down
-	{
-		if (stack->counterm > stack->last_b - posb + 2)
-		{
-			stack->counterm = stack->last_b - posb + 2;
-			stack->move = 2;
-			setall(posb, posa, stack);
-		}
-	}
-}
-
-void find_move_2(int posb, int posa, t_stack *stack)
-{
-	if (posa < posb)
-	{
-		if (stack->counterm > posb + 1) //upup
-		{
-			stack->counterm = posb + 1;
-			stack->move = 1;
-			setall(posb, posa, stack);
-		}
-	}
-	if (stack->counterm > (posb + 1 + (stack->last_a - posa) + 1)) // up down
-	{
-		stack->counterm = posb + 1 + (stack->last_a - posa) + 1;
-		stack->move = 3;
-		setall(posb, posa, stack);
-	}
-	if (stack->counterm > (stack->last_b - posb + 1 + posa + 1)) //down up
-	{
-		stack->counterm = stack->last_b - posb + 1 + posa + 1;
-		stack->move = 4;
-		setall(posb, posa, stack);
-	}
-}
-
-
-void movesinuse(t_stack *stack)
-{
-
-	if (stack->move == 1 && stack->defb <= stack->defa)
-	{
-		ft_upupamagb(stack);
-		return;
-	}
-	else if (stack->move == 1 && stack->defb > stack->defa)
-	{
-		ft_upupaminb(stack);
-		return;
-	}
-	else if (stack->move == 2 && stack->last_b - stack->defb <= stack->last_a - stack->defa)
-	{
-		ft_downdownamagb(stack);
-		return;
-	}
-	else if (stack->move == 2 && stack->last_b - stack->defb > stack->last_a - stack->defa)
-	{
-		ft_downdownaminb(stack);
-		return;
-	}
-	else if (stack->move == 3)
-	{
-		ft_updown(stack);
-		return;
-	}
-	else if (stack->move == 4)
-	{
-		ft_downup(stack);
-		return;
-	}
-}
 
 void ft_upupamagb(t_stack *stack)
 {

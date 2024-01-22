@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:31:21 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 10:49:26 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 11:30:40 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_sb(t_stack *stack)
 	return (1);
 }
 
-/*sa and sb at the same time.*/
 int	ft_ss(t_stack *stack)
 {
 	int	tmp;
