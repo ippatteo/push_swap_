@@ -6,15 +6,15 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 11:37:38 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:09:01 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void ft_upupamagb(t_stack *stack)
+void	ft_upupamagb(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = stack->defb;
 	while (i > 0)
@@ -31,9 +31,9 @@ void ft_upupamagb(t_stack *stack)
 	ft_pb(stack);
 }
 
-void ft_upupaminb(t_stack *stack)
+void	ft_upupaminb(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = stack->defa;
 	while (i > 0)
@@ -50,9 +50,9 @@ void ft_upupaminb(t_stack *stack)
 	ft_pb(stack);
 }
 
-void ft_downdownamagb(t_stack *stack)
+void	ft_downdownamagb(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = stack->last_b - stack->defb + 1;
 	if (stack->last_a - stack->defa == stack->last_b - stack->defb)
@@ -62,7 +62,7 @@ void ft_downdownamagb(t_stack *stack)
 			ft_rrr(stack);
 			i--;
 		}
-		return;
+		return ;
 	}
 	while (i > 0)
 	{
@@ -78,9 +78,9 @@ void ft_downdownamagb(t_stack *stack)
 	ft_pb(stack);
 }
 
-void ft_downdownaminb(t_stack *stack)
+void	ft_downdownaminb(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = stack->last_a - stack->defa + 1;
 	while (i > 0)
@@ -97,9 +97,9 @@ void ft_downdownaminb(t_stack *stack)
 	ft_pb(stack);
 }
 
-void ft_updown(t_stack *stack)
+void	ft_updown(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = stack->defb;
 	while (i > 0)
@@ -115,4 +115,3 @@ void ft_updown(t_stack *stack)
 	}
 	ft_pb(stack);
 }
-

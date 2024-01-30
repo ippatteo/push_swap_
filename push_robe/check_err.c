@@ -6,16 +6,16 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 16:53:50 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 11:44:14 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:55:25 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int checkdoubles(t_stack *stack)
+int	checkdoubles(t_stack *stack)
 {
-	int k;
-	int z;
+	int	k;
+	int	z;
 
 	k = 0;
 	z = 0;
@@ -23,7 +23,7 @@ int checkdoubles(t_stack *stack)
 	{
 		while (k <= stack->last_a)
 		{
-			if (stack->a[z] == stack->a[k] && k !=  z)
+			if (stack->a[z] == stack->a[k] && k != z)
 				return (1);
 			k++;
 		}
@@ -61,14 +61,15 @@ int	ft_atoi(char *str, t_stack *stack)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-				stack->error = 1;
+			stack->error = 1;
 		r = r * 10 + str[i++] - '0';
 	}
 	if (r > 2147483647 || r < -2147483647)
 		stack->error = 1;
 	return (r * s);
 }
-void error(t_stack *stack)
+
+void	error(t_stack *stack)
 {
 	if (stack->error == 1)
 	{
@@ -80,6 +81,4 @@ void error(t_stack *stack)
 		write(2, "Error\n", 6);
 		ft_exit(stack);
 	}
-
 }
-

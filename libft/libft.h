@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 03:00:55 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/20 15:04:21 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:26:53 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_putendl_fd(char *s, int fd);
 char	*risultato(char *s);
 char	*ft_read_file(int fd, char *stash);
 char	*next(char *s);
-char	*get_next_file(int fd);
 void	ft_putstr_fd(char *s, int fd);
 typedef struct s_list
 {

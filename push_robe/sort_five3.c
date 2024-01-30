@@ -1,57 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mechanical.c                                       :+:      :+:    :+:   */
+/*   sort_five3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 13:08:45 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:45:39 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	mecha_torc(t_stack *stack)
+int	find_numfive(int num, t_stack *stack)
 {
-	int	k;
+	int	i;
+
+	i = 1;
+	if (num < takemin(stack) || num > takemax(stack))
+		return (find_posa(takemax(stack), stack));
+	while (i <= stack->last_b)
+	{
+		if (num > stack->a[0] && num < stack->a[stack->last_b])
+			return (0);
+		if (num > stack->a[i] && num < stack->a[i - 1])
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+int	find_posa(int x, t_stack *stack) //trova la posb che devo far diventare 0
+{
 	int	i;
 
 	i = 0;
-	k = 0;
-	while (stack->last_a > -1)
+	while (i <= stack->last_a)
 	{
-		takevalues(stack);
-		stack->counterm = 2000000;
-		k = 0;
-		while (k <= stack->last_a)
-		{
-			i = find_num(stack->a[k], stack);
-			find_move(i, k, stack);
-			k++;
-		}
-		movesinuse(stack);
+		if (stack->a[i] == x)
+			return (i);
+		i++;
 	}
-	finalmove(stack);
-}
-
-void	finalmove(t_stack *stack)
-{
-	int	i;
-
-	takevalues(stack);
-	i = find_posb(stack->maxb, stack);
-	if (i <= stack->last_b - i + 1)
-	{
-		while (i--)
-			ft_rb(stack);
-	}
-	else
-	{
-		i = stack->last_b - i + 1;
-		while (i--)
-			ft_rrb(stack);
-	}
-	while (stack->last_b != -1)
-		ft_pa(stack);
+	return (0);
 }

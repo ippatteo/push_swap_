@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:31:21 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 11:30:40 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:38:19 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_sb(t_stack *stack)
 	stack->b[0] = stack->b[1];
 	stack->b[1] = tmp;
 	write(1, "sb\n", 3);
-    stack->mosse++;
+	stack->mosse++;
 	return (1);
 }
 
@@ -51,6 +51,6 @@ int	ft_ss(t_stack *stack)
 	stack->b[0] = stack->b[1];
 	stack->b[1] = tmp;
 	write(1, "ss\n", 3);
-    stack->mosse++;
+	stack->mosse++;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:30:52 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 11:26:38 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:35:48 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_pb(t_stack *stack)
 		len++;
 	}
 	stack->last_a--;
-    stack->mosse++;
+	stack->mosse++;
 	write(1, "pb\n", 3);
 	return (1);
 }
