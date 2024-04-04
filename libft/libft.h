@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 03:00:55 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/01/22 12:26:53 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:44:52 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #  define BUFFER_SIZE 10
 # endif
 
+char	*get_next_line(int fd);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 int		ft_isalpha(int c);
 int		ft_tolower(int c);
