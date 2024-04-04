@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:06:42 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/04/04 12:46:39 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:18:32 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_stack
 	int	stck;
 }	t_stack;
 
+int		is_array_sorted(int *arr, int size);
+int		ft_print_okko(t_stack *stack);
 int		find_posa(int x, t_stack *stack);
 int		find_numfive(int num, t_stack *stack);
 void	start_push(t_stack *stack);

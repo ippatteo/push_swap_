@@ -6,26 +6,13 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:30:18 by mcamilli          #+#    #+#             */
-/*   Updated: 2024/04/04 13:00:24 by mcamilli         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:20:06 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int isArray_sorted(int *arr, int size)
-{
-    int i = 0;
-    while (i < size)
-	{
-        if (arr[i] > arr[i + 1]) {
-            return 0; // Trovato un elemento che è maggiore del successivo, l'array non è ordinato
-        }
-        i++;
-    }
-    return 1; // L'array è ordinato
-}
-
-void apply_instruction(char *cmd, t_stack *stack) 
+void	apply_instruction(char *cmd, t_stack *stack)
 {
 	if (ft_strncmp(cmd, "sa", ft_strlen(cmd) -1) == 0)
 		ft_sa(stack);
@@ -54,7 +41,7 @@ void apply_instruction(char *cmd, t_stack *stack)
 int	main(int ac, char **av)
 {
 	t_stack	stack;
-	char *cmd;
+	char	*cmd;
 
 	stack.error = 0;
 	if (ac >= 2)
@@ -63,16 +50,16 @@ int	main(int ac, char **av)
 		if (!takearg(av, ac, &stack))
 			return (0);
 		setmain(&stack);
-		while ((cmd = get_next_line(0)) != NULL) 
+		while (1)
 		{
+			cmd = get_next_line(0);
+			if (cmd == NULL)
+				break ;
 			apply_instruction(cmd, &stack);
 			free(cmd);
 		}
-		if (isArray_sorted(stack.a, stack.last_a))
-			write(1, "OK\n", 3);
-		else	
-			write(1, "KO\n", 3);
-		ft_exit(&stack);
+		free(cmd);
+		ft_print_okko(&stack);
 		return (0);
 	}
 	else
